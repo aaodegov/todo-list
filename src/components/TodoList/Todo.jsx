@@ -12,6 +12,13 @@ function Todo({ todo, removeTodo, changeCompleteStatus, editTodo }) {
 		setCanEditingTextTodo(!canEditingTextTodo);
 	};
 
+	const keyPress = (e) => {
+		const key = e.keyPress || e.which;
+		if (key === 13) {
+			setCanEditingTextTodo(!canEditingTextTodo);
+		}
+	};
+
 	return (
 		<div className={style.todoElement}>
 			<div className={style.dotIcon}>
@@ -23,6 +30,9 @@ function Todo({ todo, removeTodo, changeCompleteStatus, editTodo }) {
 					todo.text
 				) : (
 					<input
+						onKeyPress={(e) => {
+							keyPress(e);
+						}}
 						className={style.todoText}
 						value={todo.text}
 						onChange={(e) => editTodo(todo.id, e.target.value)}></input>
@@ -30,10 +40,13 @@ function Todo({ todo, removeTodo, changeCompleteStatus, editTodo }) {
 			</div>
 
 			<div className={style.todoElementButtons}>
-				<BsCheckLg
-					onClick={() => changeCompleteStatus(todo.id)}
-					className={style.check}
-				/>
+				{!canEditingTextTodo ? (
+					<BsCheckLg
+						onClick={() => changeCompleteStatus(todo.id)}
+						className={style.check}
+					/>
+				) : null}
+
 				<FaPen onClick={changeEditMode} className={style.pen} />
 				<IoTrashBinSharp
 					onClick={() => removeTodo(todo.id)}
