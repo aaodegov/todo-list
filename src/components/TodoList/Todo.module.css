@@ -1,0 +1,61 @@
+.todoElement {
+	border: 1px solid black;
+	padding: 10px;
+	margin: 10px;
+	border-radius: 6px;
+	display: flex;
+	background-color: white;
+}
+
+.todoText {
+	width: 100%;
+	display: flex;
+}
+
+input {
+	padding-left: 5px;
+}
+
+.dotIcon {
+	margin-right: 5px;
+	vertical-align: middle;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.todoElementButtons {
+	display: flex;
+
+	cursor: pointer;
+}
+
+.pen {
+	padding: 3px;
+}
+
+.pen:hover {
+	transition: 0.3s;
+	scale: 1.3;
+}
+
+.check {
+	padding: 3px;
+	margin-left: 5px;
+}
+
+.check:hover {
+	transition: 0.3s;
+	scale: 1.3;
+	color: green;
+}
+
+.garbage {
+	padding: 3px;
+}
+
+.garbage:hover {
+	transition: 0.3s;
+	scale: 1.3;
+	color: red;
+}
