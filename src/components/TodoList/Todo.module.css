@@ -7,6 +7,16 @@
 	background-color: white;
 }
 
+.todoElementComleted {
+	border: 1px solid black;
+	padding: 10px;
+	margin: 10px;
+	border-radius: 6px;
+	display: flex;
+	background-color: rgb(228, 247, 228);
+	border-color: darkgreen;
+}
+
 .todoText {
 	width: 100%;
 	display: flex;

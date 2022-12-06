@@ -1,0 +1,19 @@
+.button {
+	margin: 5px;
+	border: none;
+	background-color: rgb(224, 228, 231);
+	color: rgb(98, 101, 104);
+	font-family: 'Montserrat', sans-serif;
+	cursor: pointer;
+	transition: 0.1s;
+}
+
+.button:hover {
+	color: black;
+	scale: 1.1;
+}
+
+button:disabled {
+	scale: 1;
+	cursor: not-allowed;
+}
