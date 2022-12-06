@@ -103,7 +103,7 @@ function App() {
 
 	return (
 		<div className="App">
-			<h1>Todo App</h1>
+			<h1>Todo App :3</h1>
 			<Todoform addTodo={addTodoHandler} />
 			<Buttons
 				hideCompletedTodos={hideCompletedTodosHandler}
