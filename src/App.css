@@ -8,6 +8,7 @@
 .App h1 {
 	font-weight: bolder;
 	color: rgb(98, 101, 104);
+	user-select: none;
 }
 
 .App h1:hover {

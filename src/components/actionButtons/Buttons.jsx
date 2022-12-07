@@ -2,7 +2,7 @@ import Button from './Button';
 import style from './Buttons.module.css';
 
 const Buttons = ({
-	removeAllTodos,
+	openModal,
 	hideCompletedTodos,
 	showInProgressTodo,
 	showCompletedTodo,
@@ -12,7 +12,7 @@ const Buttons = ({
 			<Button onClick={hideCompletedTodos}>hide completed</Button>
 			<Button onClick={showInProgressTodo}>show in progress todo</Button>
 			<Button onClick={showCompletedTodo}>show completed todo</Button>
-			<Button onClick={removeAllTodos}>clear all</Button>
+			<Button onClick={openModal}>clear all</Button>
 		</div>
 	);
 };

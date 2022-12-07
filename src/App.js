@@ -2,11 +2,16 @@ import { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import './App.css';
 import Todoform from './components/TodoList/Todoform';
+import Modal from './components/Modal/Modal';
 import Todolist from './components/TodoList/Todolist';
 import Buttons from './components/actionButtons/Buttons';
 
 function App() {
-	const [viewMode, setViewMode] = useState('all');
+	const viewModeState = { NEW: 'newTodos', COMPLETED: 'copmletedTodos' };
+
+	const [viewMode, setViewMode] = useState(viewModeState.NEW);
+
+	const [isModalActive, setIsModalActive] = useState(false);
 
 	const [todos, setTodos] = useState(
 		JSON.parse(localStorage.getItem('todos')) || []
@@ -90,28 +95,36 @@ function App() {
 	};
 
 	const removeAllTodos = () => {
-		confirm('Confirm?') ? setTodos([]) : console.log('uwu');
+		setTodos([]);
+		setIsModalActive(false);
 	};
 
 	const showInProgressTodo = () => {
-		setViewMode('all');
+		setViewMode(viewModeState.NEW);
 	};
 
 	const showCompletedTodo = () => {
-		setViewMode('inProgress');
+		setViewMode(viewModeState.COMPLETED);
 	};
 
 	return (
 		<div className="App">
-			<h1>Todo App :3</h1>
+			<h1>Todo App</h1>
 			<Todoform addTodo={addTodoHandler} />
+			<Modal
+				active={isModalActive}
+				setModalActive={setIsModalActive}
+				removeAllTodos={removeAllTodos}
+			/>
 			<Buttons
 				hideCompletedTodos={hideCompletedTodosHandler}
 				showInProgressTodo={showInProgressTodo}
 				showCompletedTodo={showCompletedTodo}
-				removeAllTodos={removeAllTodos}></Buttons>
+				openModal={
+					todos.length ? () => setIsModalActive(true) : null
+				}></Buttons>
 			<Todolist
-				todos={viewMode === 'all' ? todos : completedTodos}
+				todos={viewMode === viewModeState.NEW ? todos : completedTodos}
 				removeTodo={removeTodoHandler}
 				changeCompleteStatus={completeStatusHandler}
 				editTodo={editTextTodo}
