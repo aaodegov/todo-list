@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import style from './Todoform.module.css';
 
-function Todoform(props) {
+function Todoform({ addTodo }) {
 	const [text, setText] = useState('');
 
 	const onSubmitHandler = (event) => {
 		event.preventDefault();
-		props.addTodo(text);
+		addTodo(text);
 		setText('');
 	};
 
@@ -15,9 +15,13 @@ function Todoform(props) {
 			<form onSubmit={onSubmitHandler}>
 				<input
 					value={text}
-					onChange={(e) => setText(e.target.value)}
+					onChange={(e) => {
+						setText(e.target.value);
+					}}
 					placeholder="Enter your todo..."></input>
-				<button type="submit">Submit</button>
+				<button disabled={!text} type="submit">
+					Submit
+				</button>
 			</form>
 		</div>
 	);

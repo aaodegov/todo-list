@@ -4,3 +4,13 @@
 	margin: 0 auto;
 	background-color: rgb(224, 228, 231);
 }
+
+.App h1 {
+	font-weight: bolder;
+	color: rgb(98, 101, 104);
+	user-select: none;
+}
+
+.App h1:hover {
+	color: black;
+}

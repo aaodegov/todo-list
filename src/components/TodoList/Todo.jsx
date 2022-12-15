@@ -20,9 +20,12 @@ function Todo({ todo, removeTodo, changeCompleteStatus, editTodo }) {
 	};
 
 	return (
-		<div className={style.todoElement}>
+		<div
+			className={
+				todo.isCompleted ? style.todoElementComleted : style.todoElement
+			}>
 			<div className={style.dotIcon}>
-				<RxDotFilled />
+				<RxDotFilled title="do you really need a hint? :3" />
 			</div>
 
 			<div className={style.todoText}>
@@ -35,21 +38,29 @@ function Todo({ todo, removeTodo, changeCompleteStatus, editTodo }) {
 						}}
 						className={style.todoText}
 						value={todo.text}
-						onChange={(e) => editTodo(todo.id, e.target.value)}></input>
+						onChange={(e) =>
+							editTodo(todo.id, todo.isCompleted, e.target.value)
+						}></input>
 				)}
 			</div>
 
 			<div className={style.todoElementButtons}>
 				{!canEditingTextTodo ? (
 					<BsCheckLg
+						title="Mark this todo as completed"
 						onClick={() => changeCompleteStatus(todo.id)}
 						className={style.check}
 					/>
 				) : null}
 
-				<FaPen onClick={changeEditMode} className={style.pen} />
+				<FaPen
+					title="Enable/disable edit mode"
+					onClick={changeEditMode}
+					className={style.pen}
+				/>
 				<IoTrashBinSharp
-					onClick={() => removeTodo(todo.id)}
+					title="Remove this todo"
+					onClick={() => removeTodo(todo.id, todo.isCompleted)}
 					className={style.garbage}
 				/>
 			</div>
